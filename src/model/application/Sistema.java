@@ -15,7 +15,7 @@ public class Sistema {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner scanner = new Scanner(System.in);
-        int opcaoUsuario = 0;
+        int opcaoUsuario;
         String nome;
         String data;
         Biblioteca biblioteca = new Biblioteca();
@@ -27,6 +27,9 @@ public class Sistema {
             System.out.println("2 - Cadastro autor");
             System.out.println("3 - Cadastro livro");
             System.out.println("4 - Emprestimo de livro");
+            System.out.println("5 - Listar clientes");
+            System.out.println("6 - Listar livros");
+            System.out.println("7 - Listar autor");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             opcaoUsuario = scanner.nextInt();
@@ -82,6 +85,15 @@ public class Sistema {
                     System.out.print("Informe o id do livro que deseja emprestar: ");
                     int idLivro = scanner.nextInt();
                     biblioteca.emprestar(idCliente, idLivro);
+                    break;
+                case 5:
+                    biblioteca.exibirClientes();
+                    break;
+                case 6:
+                    biblioteca.listarLivros();
+                    break;
+                case 7:
+                    biblioteca.exibirLivros();
                     break;
                 case 0:
                     break;

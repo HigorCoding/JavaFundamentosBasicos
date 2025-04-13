@@ -9,7 +9,6 @@ public class Biblioteca {
 
     private List<Livro> livros = new ArrayList<>();
     private List<Autor> autores = new ArrayList<>();
-    private List<StatusLivro> statusLivros = new ArrayList<>();
     private List<Clientes> clientes = new ArrayList<>();
     private List<Emprestimo> livrosEmprestados = new ArrayList<>();
 
@@ -27,14 +26,6 @@ public class Biblioteca {
 
     public List<Autor> listarAutores() {
         return autores;
-    }
-
-    public void adicionarStatus(StatusLivro statusLivro) {
-        statusLivros.add(statusLivro);
-    }
-
-    public List<StatusLivro> listarStatusLivro() {
-        return statusLivros;
     }
 
     public void adicionarCliente(Clientes cliente) {
@@ -83,6 +74,7 @@ public class Biblioteca {
         } else {
             for (Autor autor : autores) {
                 System.out.println(autor);
+                System.out.println();
             }
         }
     }
@@ -104,6 +96,7 @@ public class Biblioteca {
         } else {
             for (Livro livro : livros) {
                 System.out.println(livro);
+                System.out.println();
             }
         }
     }
