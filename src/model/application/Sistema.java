@@ -74,13 +74,13 @@ public class Sistema {
                     String statusStr = scanner.nextLine().toUpperCase();
                     StatusLivro status = StatusLivro.valueOf(statusStr);
                     Livro livro = new Livro(nome, autorSelecionado, dataCadastro, status);
-
+                    biblioteca.adicionarLivro(livro);
+                    biblioteca.exibirAutores();
                     break;
                 case 4:
                     System.out.println("Empréstimo de livro selecionado.");
                     break;
                 case 0:
-                    System.out.println("Programa encerrado.");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
