@@ -4,7 +4,6 @@ import model.entities.Autor;
 import model.entities.Biblioteca;
 import model.entities.Clientes;
 import model.entities.Livro;
-import model.enums.StatusLivro;
 
 import java.time.LocalDate;
 import java.util.Locale;
@@ -46,7 +45,7 @@ public class Sistema {
                     Clientes clientes = new Clientes(nome, dataNascimento, email);
                     biblioteca.adicionarCliente(clientes);
                     biblioteca.exibirClientes();
-                    scanner.next();
+                    scanner.nextLine();
                     break;
                 case 2:
                     System.out.println("Cadastro de autor selecionado.");
@@ -58,7 +57,7 @@ public class Sistema {
                     Autor autor =  new Autor(nome, dataNascimentoAutor);
                     biblioteca.adicionarAutores(autor);
                     biblioteca.exibirAutores();
-                    scanner.next();
+                    scanner.nextLine();
                     break;
                 case 3:
                     System.out.println("Cadastro de livro selecionado.");
@@ -70,15 +69,19 @@ public class Sistema {
                     System.out.print("Data do livro (dd/MM/yyyy): ");
                     data = scanner.next();
                     LocalDate dataCadastro = LocalDate.parse(data, formatter);
-                    System.out.println("Status livro (disponoivel/emprestado): ");
-                    String statusStr = scanner.nextLine().toUpperCase();
-                    StatusLivro status = StatusLivro.valueOf(statusStr);
-                    Livro livro = new Livro(nome, autorSelecionado, dataCadastro, status);
+                    scanner.nextLine();
+                    Livro livro = new Livro(nome, autorSelecionado, dataCadastro);
                     biblioteca.adicionarLivro(livro);
-                    biblioteca.exibirAutores();
+                    biblioteca.exibirLivros();
                     break;
                 case 4:
                     System.out.println("Empréstimo de livro selecionado.");
+                    biblioteca.exibirLivrosDisponiveis();
+                    System.out.print("Informe seu id: ");
+                    int idCliente = scanner.nextInt();
+                    System.out.print("Informe o id do livro que deseja emprestar: ");
+                    int idLivro = scanner.nextInt();
+                    biblioteca.emprestar(idCliente, idLivro);
                     break;
                 case 0:
                     break;

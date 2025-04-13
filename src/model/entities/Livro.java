@@ -11,7 +11,7 @@ public class Livro {
     private Autor autor;
     private LocalDate dataCadastro;
     private StatusLivro statusLivro;
-    private static int contadorId = 0;
+    private static int contadorIdLivro = 0;
 
     public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -19,12 +19,12 @@ public class Livro {
     }
 
     public Livro(String titulo, Autor autor,
-                 LocalDate dataCadastro, StatusLivro statusLivro) {
-        this.id =++contadorId;
+                 LocalDate dataCadastro) {
+        this.id =++contadorIdLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.dataCadastro = dataCadastro;
-        this.statusLivro = statusLivro;
+        this.statusLivro = StatusLivro.DISPONIVEL;
     }
 
     public int getId() {
@@ -57,5 +57,18 @@ public class Livro {
     public void setStatusLivro(StatusLivro statusLivro) {
         this.statusLivro = statusLivro;
     }
+    public boolean isDisponivel(){
+        return this.statusLivro == StatusLivro.DISPONIVEL;
+    }
 
+    @Override
+    public String toString() {
+        return "Autor{"+
+                "id= " + id +
+                ", nome: " + autor.getNomeAutor() +
+                ", titulo: " +titulo+
+                ", data de lançamento: " + dataCadastro +
+                ", status livro: " + statusLivro+
+                "}";
+    }
 }

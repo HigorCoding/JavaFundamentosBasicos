@@ -7,13 +7,13 @@ public class Clientes {
     private String nome;
     private LocalDate dataNascimento;
     private String email;
-    private static int contadorId = 0;
+    private static int contadorIdCliente = 0;
 
     public Clientes() {
     }
 
     public Clientes(String nome, LocalDate dataNascimento, String email) {
-        this.id = ++contadorId;
+        this.id = ++contadorIdCliente;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.email = email;
