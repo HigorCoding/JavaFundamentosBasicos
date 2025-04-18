@@ -31,6 +31,7 @@ public class Sistema {
             System.out.println("6 - Listar livros");
             System.out.println("7 - Listar autor");
             System.out.println("8 - Listar livros emprestados: ");
+            System.out.println("9 - Devolução livros emprestados: ");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             opcaoUsuario = scanner.nextInt();
@@ -98,6 +99,15 @@ public class Sistema {
                     break;
                 case 8:
                     biblioteca.exibirLivrosEmprestados();
+                    break;
+                case 9:
+                    System.out.println("Opção solicitada devolução de livros");
+                    biblioteca.exibirLivrosEmprestados();
+                    System.out.println("Qual seu id?");
+                    idCliente = scanner.nextInt();
+                    System.out.println("Digite o id do livro: ?");
+                    idLivro = scanner.nextInt();
+                    biblioteca.devolver(idCliente,idLivro);
                     break;
                 case 0:
                     System.out.println("Muito obrigado!");

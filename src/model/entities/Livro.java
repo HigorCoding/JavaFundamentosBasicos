@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Livro {
-    private int id;
+    private int idLivro;
     private String titulo;
     private Autor autor;
     private LocalDate dataCadastro;
@@ -20,15 +20,15 @@ public class Livro {
 
     public Livro(String titulo, Autor autor,
                  LocalDate dataCadastro) {
-        this.id =++contadorIdLivro;
+        this.idLivro =++contadorIdLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.dataCadastro = dataCadastro;
         this.statusLivro = StatusLivro.DISPONIVEL;
     }
 
-    public int getId() {
-        return id;
+    public int getIdLivro() {
+        return idLivro;
     }
 
     public String getTitulo() {
@@ -64,7 +64,7 @@ public class Livro {
     @Override
     public String toString() {
         return "Autor{"+
-                "id= " + id +
+                "id= " + idLivro +
                 ", nome: " + autor.getNomeAutor() +
                 ", titulo: " +titulo+
                 ", data de lançamento: " + dataCadastro +

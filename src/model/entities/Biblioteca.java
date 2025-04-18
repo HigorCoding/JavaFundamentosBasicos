@@ -34,7 +34,7 @@ public class Biblioteca {
 
     public Clientes encontrarClientePorId(int idCliente) {
         for (Clientes cliente : listarClientes()) {
-            if (cliente.getId() == idCliente) {
+            if (cliente.getIdCliente() == idCliente) {
                 return cliente;
             }
         }
@@ -79,6 +79,7 @@ public class Biblioteca {
             System.out.println("Nenhum livro emprestrado!");
             return;
         }
+        System.out.println("Livros sendo emprestados!");
         for (Emprestimo emprestimo : livrosEmprestados){
             System.out.println(emprestimo);
             System.out.println();
@@ -95,6 +96,17 @@ public class Biblioteca {
         }
         System.out.println("Autor não encontrado");
         return null;
+    }
+
+    public boolean buscarIdCliente(int idBuscado) {
+        for (Clientes cliente : listarClientes()) {
+            if (cliente.getIdCliente() == idBuscado) {
+                System.out.println("Id do cliente encontrado!");
+                return true;
+            }
+        }
+        System.out.println("Cliente não encontrado");
+        return false;
     }
 
     public void exibirLivros() {
@@ -127,7 +139,7 @@ public class Biblioteca {
             return;
         }
         for (Livro livro : livros){
-            if (livro.getId() == idLivro){
+            if (livro.getIdLivro() == idLivro){
                 if (livro.isDisponivel()){
                    livro.setStatusLivro(StatusLivro.EMPRESTADO);
                    Emprestimo emprestimo = new Emprestimo(livro, cliente);
@@ -141,6 +153,22 @@ public class Biblioteca {
             }
         }
         System.out.println("Livro não encontrado.");
+    }
+
+    public void devolver(int idCliente, int idLivro){
+        for (Emprestimo emprestimo : livrosEmprestados){
+            if (emprestimo.isAtivo() &&
+                    emprestimo.getCliente().getIdCliente() == idCliente &&
+                    emprestimo.getLivro().getIdLivro() == idLivro) {
+
+                emprestimo.devolverLivro();
+                emprestimo.getLivro().setStatusLivro(StatusLivro.DISPONIVEL);
+                System.out.println("Livro devolvido com sucesso!");
+                return;
+            };
+
+        }
+        System.out.println("Nenhum empréstimo encontrado com esses dados.");
     }
 }
 

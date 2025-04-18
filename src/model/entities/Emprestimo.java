@@ -1,34 +1,44 @@
 package model.entities;
 
 public class Emprestimo {
-    private int id;
+    private int idLivroEmprestimo;
     private static int contadorIdEmprestimo = 0;
     private Livro livro;
     private Clientes cliente;
     private boolean ativo;
 
     public Emprestimo(Livro livro, Clientes cliente) {
-        this.id = ++contadorIdEmprestimo;
+        this.idLivroEmprestimo = ++contadorIdEmprestimo;
         this.livro = livro;
         this.cliente = cliente;
         this.ativo = true;
     }
+    public Clientes getCliente(){
+        return cliente;
+    }
 
-    public int getId() {
-        return id;
+    public Livro getLivro(){
+        return livro;
+    }
+
+    public int getIdLivroEmprestimo() {
+        return idLivroEmprestimo;
     }
 
     public boolean isAtivo() {
         return ativo;
     }
 
-
+    public void devolverLivro(){
+        this.ativo = false;
+    }
     @Override
     public String toString() {
         return "Emprestimo{" +
-                "id do emprestimo=" + id +
+                "idLivroEmprestimo do emprestimo=" + idLivroEmprestimo +
                 ", livro=" + livro.getTitulo() +
                 ", nomeUsuario='" + cliente.getNome() +
+                ", idLivroEmprestimo do usario='" + cliente.getIdCliente() +
                 ", ativo=" + ativo +
                 '}';
     }

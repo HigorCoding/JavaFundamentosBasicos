@@ -3,7 +3,7 @@ package model.entities;
 import java.time.LocalDate;
 
 public class Clientes {
-    private int id;
+    private int idCliente;
     private String nome;
     private LocalDate dataNascimento;
     private String email;
@@ -13,14 +13,14 @@ public class Clientes {
     }
 
     public Clientes(String nome, LocalDate dataNascimento, String email) {
-        this.id = ++contadorIdCliente;
+        this.idCliente = ++contadorIdCliente;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCliente() {
+        return idCliente;
     }
 
     public String getNome() {
