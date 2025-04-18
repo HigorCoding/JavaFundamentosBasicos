@@ -1,6 +1,7 @@
 package model.entities;
 
 import model.enums.StatusLivro;
+import model.exception.DadosValidacaoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,7 +153,7 @@ public class Biblioteca {
                 }
             }
         }
-        System.out.println("Livro não encontrado.");
+        throw new DadosValidacaoException();
     }
 
     public void devolver(int idCliente, int idLivro){
@@ -165,10 +166,10 @@ public class Biblioteca {
                 emprestimo.getLivro().setStatusLivro(StatusLivro.DISPONIVEL);
                 System.out.println("Livro devolvido com sucesso!");
                 return;
-            };
+            }
 
         }
-        System.out.println("Nenhum empréstimo encontrado com esses dados.");
+        throw new DadosValidacaoException();
     }
 }
 
