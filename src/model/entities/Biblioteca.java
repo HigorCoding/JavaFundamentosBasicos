@@ -16,10 +16,6 @@ public class Biblioteca {
         livros.add(livro);
     }
 
-    public List<Livro> listarLivros() {
-        return livros;
-    }
-
     public void adicionarAutores(Autor autor) {
         autores.add(autor);
     }
@@ -35,9 +31,6 @@ public class Biblioteca {
     public List<Clientes> listarClientes() {
         return clientes;
     }
-    public void adcionarLivrosEmprestados(Emprestimo livro){
-        livrosEmprestados.add(livro);
-    }
 
     public Clientes encontrarClientePorId(int idCliente) {
         for (Clientes cliente : listarClientes()) {
@@ -45,6 +38,7 @@ public class Biblioteca {
                 return cliente;
             }
         }
+        System.out.println("Cliente não encontrado!");
         return null;
     }
 
@@ -61,21 +55,34 @@ public class Biblioteca {
     public void exibirClientes() {
         if (clientes.isEmpty()) {
             System.out.println("Nenhum cliente cadastrado.");
-        } else {
-            for (Clientes cliente : clientes) {
-                System.out.println(cliente);
-            }
+            return;
+        }
+        for (Clientes cliente : clientes) {
+            System.out.println(cliente);
         }
     }
+
 
     public void exibirAutores() {
         if (autores.isEmpty()) {
             System.out.println("Nenhum autor cadastrado.");
-        } else {
-            for (Autor autor : autores) {
-                System.out.println(autor);
-                System.out.println();
-            }
+            return;
+        }
+        for (Autor autor : autores) {
+            System.out.println(autor);
+            System.out.println();
+        }
+    }
+
+    public void exibirLivrosEmprestados(){
+        if (livrosEmprestados.isEmpty()){
+            System.out.println("Nenhum livro emprestrado!");
+            return;
+        }
+        for (Emprestimo emprestimo : livrosEmprestados){
+            System.out.println(emprestimo);
+            System.out.println();
+
         }
     }
 
@@ -93,25 +100,26 @@ public class Biblioteca {
     public void exibirLivros() {
         if (livros.isEmpty()) {
             System.out.println("Nenhum livro cadastrado.");
-        } else {
-            for (Livro livro : livros) {
-                System.out.println(livro);
-                System.out.println();
+            return;
+        }
+        for (Livro livro : livros) {
+            System.out.println(livro);
+            System.out.println();
             }
         }
-    }
 
     public void exibirLivrosDisponiveis() {
         List<Livro> disponiveis = listarLivrosDisponiveis();
         if (disponiveis.isEmpty()) {
-            System.out.println("Nenhum livro cadastrado!");
-        } else {
-            System.out.println("Livros disponíveis:");
-            for (Livro livro : disponiveis) {
-                System.out.println(livro);
+            System.out.println("Nenhum livro disponivel!");
+            return;
+        }
+        System.out.println("Livros disponíveis:");
+        for (Livro livro : disponiveis) {
+            System.out.println(livro);
             }
         }
-    }
+
     public void emprestar(int idCliente, int idLivro){
         Clientes cliente = encontrarClientePorId(idCliente);
         if (cliente == null) {
@@ -124,8 +132,8 @@ public class Biblioteca {
                    livro.setStatusLivro(StatusLivro.EMPRESTADO);
                    Emprestimo emprestimo = new Emprestimo(livro, cliente);
                    livrosEmprestados.add(emprestimo);
-                    System.out.println("Livro emprestado com sucesso!");
-                    return;
+                   System.out.println("Livro emprestado com sucesso!");
+                   return;
                 }else {
                     System.out.println("Livro não disponivel!");
                     return;

@@ -30,6 +30,7 @@ public class Sistema {
             System.out.println("5 - Listar clientes");
             System.out.println("6 - Listar livros");
             System.out.println("7 - Listar autor");
+            System.out.println("8 - Listar livros emprestados: ");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             opcaoUsuario = scanner.nextInt();
@@ -90,12 +91,16 @@ public class Sistema {
                     biblioteca.exibirClientes();
                     break;
                 case 6:
-                    biblioteca.listarLivros();
-                    break;
-                case 7:
                     biblioteca.exibirLivros();
                     break;
+                case 7:
+                    biblioteca.exibirAutores();
+                    break;
+                case 8:
+                    biblioteca.exibirLivrosEmprestados();
+                    break;
                 case 0:
+                    System.out.println("Muito obrigado!");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");

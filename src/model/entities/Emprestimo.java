@@ -14,13 +14,8 @@ public class Emprestimo {
         this.ativo = true;
     }
 
-
     public int getId() {
         return id;
-    }
-
-    public Livro getLivro() {
-        return livro;
     }
 
     public boolean isAtivo() {
@@ -31,9 +26,9 @@ public class Emprestimo {
     @Override
     public String toString() {
         return "Emprestimo{" +
-                "id=" + id +
-                ", livro=" + livro +
-                ", nomeUsuario='" + cliente +
+                "id do emprestimo=" + id +
+                ", livro=" + livro.getTitulo() +
+                ", nomeUsuario='" + cliente.getNome() +
                 ", ativo=" + ativo +
                 '}';
     }
